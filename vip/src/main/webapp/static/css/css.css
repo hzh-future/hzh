@@ -1,0 +1,45 @@
+menu,h1,ul{
+    margin: 0;
+}
+html,body{
+    margin: 0;
+    height: 100%;
+    font-size: 14px;
+}
+body>header{
+    line-height: 80px;
+    text-align: center;
+    background: #999;
+}
+body>header>h1{
+    display: inline;
+
+}
+.body{
+    position: absolute;
+    top: 80px;
+    bottom: 0;
+    width: 100%;
+}
+.body>menu{
+    position: absolute;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: lightgrey;
+    box-sizing: border-box;
+}
+.body>main{
+    margin-left: 200px;
+    height: 100%;
+}
+main>iframe{
+    float: right;
+    height: 100%;
+    width: 100%;
+    border: 2px;
+    display: block;
+}
+ul{
+    list-style-type: none;
+}

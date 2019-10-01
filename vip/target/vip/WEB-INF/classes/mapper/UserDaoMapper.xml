@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzh.vip.dao.UserDao">
+    <select id="select" resultType="com.hzh.vip.entity.UserEntity">
+      select * from sys_user where ${key} = #{value}
+    </select>
+
+    <update id="update">
+        update sys_user
+        set
+        password=#{password}
+        where id = #{id}
+    </update>
+
+    <insert id="insertClient">
+        insert into vip_detail(code,name,money,dengji,xia)
+        values(#{code},#{name},${money},#{dengji},${xia})
+    </insert>
+
+    <select id="selectClient" resultType="com.hzh.vip.entity.ClientEntity">
+        select * from vip_detail where code=#{code}
+    </select>
+
+    <insert id="vipInsert">
+        insert into vip_consume(code,name,x_date,x_project,x_je)
+        values(#{code},#{name},#{x_date},#{x_project},${x_je})
+    </insert>
+
+    <update id="vipUpdate">
+        update vip_detail set
+        money = ${money},
+        dengji = #{dengji},
+        xia = ${xia}
+        where code = #{code}
+    </update>
+    
+    <select id="selectAllX" resultType="com.hzh.vip.entity.VIPEntity">
+        select * from vip_consume
+    </select>
+
+    <select id="selectCodeAllX" resultType="com.hzh.vip.entity.VIPEntity">
+        select * from vip_consume where code=#{code}
+    </select>
+
+    <select id="selectAllC" resultType="com.hzh.vip.entity.ClientEntity">
+        select * from vip_detail
+    </select>
+
+    <select id="selectCodeAllC" resultType="com.hzh.vip.entity.ClientEntity">
+        select * from vip_detail where code = #{code}
+    </select>
+
+    <select id="selectIdClient" resultType="String">
+        select code from vip_detail where id=#{id}
+    </select>
+
+    <update id="updateRecord">
+          update vip_consume set
+          code = #{code},
+          name = #{name}
+          where code=#{phone}
+    </update>
+
+    <update id="updateClient">
+        update vip_detail set
+        code = #{code},
+        name = #{name}
+        where id = ${id}
+    </update>
+
+    <delete id="consumeDelete">
+        delete from vip_consume where code=#{code}
+    </delete>
+
+    <delete id="clientDelete" parameterType="int">
+        delete from vip_detail where id=${id}
+    </delete>
+</mapper>
